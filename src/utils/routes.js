@@ -6,6 +6,7 @@ import {
 	UsergroupDeleteOutlined,
 	FundOutlined,
 } from '@ant-design/icons'
+import LogoutPage from "../pages/LogoutPage"
 
  
  export const routes =[
@@ -23,7 +24,10 @@ import {
         id:3,
         path:"/review",
         component: <Review/>
-    }
+    },
+    {id:4,
+    path:"/logout",
+component: <LogoutPage/>}
  ]
 
 

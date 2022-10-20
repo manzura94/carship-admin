@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useLocation,Link,Routes,Route } from "react-router-dom";
+import { useLocation,Link,Routes,Route,Navigate } from "react-router-dom";
 import { Layout, Menu, PageHeader, Space, Dropdown, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import { menubar, routes} from "../utils/routes";
 import Login from "../pages/Login";
 import { Context } from "../contexts/UserContext";
+import LogOutBtn from "../components/LogOutBtn";
 
 
 const { Content, Sider } = Layout;
@@ -25,7 +27,19 @@ const MainLayout = () => {
     <>
     {user ? (
       <Layout>
-        <PageHeader title={"Carship National"} />
+        <PageHeader title={"Carship National"} extra={
+         <Dropdown
+         key={"2"}
+         overlay={<LogOutBtn />}
+         trigger={["click"]}
+         placement="bottomRight"
+       >
+         <Space>
+           <Avatar size={"large"} icon={<UserOutlined />} className="avatar"/>
+         </Space>
+       </Dropdown>
+
+        } />
         <Layout>
           <Sider width={300}>
             <Menu
@@ -53,7 +67,11 @@ const MainLayout = () => {
           </Layout>
         </Layout>
       </Layout>):(
-        <Login/>
+         <Routes>
+         <Route path="/" element={<Login />} />
+         <Route path="/logout" element={<Navigate to="/login" replace />} />
+         <Route path="/login" element={<Navigate to="/" replace/>}/>
+       </Routes>
       )}
     </>
   );

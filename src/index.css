@@ -102,3 +102,16 @@ body {
 .ant-popover-message{
   margin: 20px 0;
 }
+
+.login-error{
+  color: red;
+}
+.example{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.avatar{
+  cursor: pointer;
+}
